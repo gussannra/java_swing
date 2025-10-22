@@ -1,20 +1,24 @@
 package button;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class MyFrame extends JFrame implements ActionListener {
+public class MyFrame extends JFrame implements ActionListener, MouseListener {
     private int widthFrame;
     private int heightFrame;
     JButton button;
     JLabel label;
+    Border buttonBorder;
 
     // Constructor
     public MyFrame() {
@@ -22,6 +26,7 @@ public class MyFrame extends JFrame implements ActionListener {
         heightFrame = 700;
 
         ImageIcon icon = new ImageIcon("test.png");
+        buttonBorder = BorderFactory.createLineBorder(Color.BLUE);
 
         // Button stuff
         button = new JButton();
@@ -31,16 +36,10 @@ public class MyFrame extends JFrame implements ActionListener {
         button.setFocusable(false);
         button.setIcon(icon);
         button.setForeground(Color.RED);
+        button.setBackground(Color.MAGENTA);
+        button.setBorder(buttonBorder);
 
-        button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(Color.GREEN);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(UIManager.getColor("control"));
-            }
-        });
+        button.addMouseListener(this);
 
         // Label stuff
         label = new JLabel("Hello world");
@@ -54,6 +53,8 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setVisible(true);
         this.add(button);
         this.add(label);
+        this.setTitle("My window");
+        this.setIconImage(icon.getImage());
     }
 
     @Override
@@ -61,5 +62,27 @@ public class MyFrame extends JFrame implements ActionListener {
         if (e.getSource() == button) {
             System.out.println("\033[0;34mpoo");
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent evt) {
+        button.setBackground(Color.GREEN);
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent evt) {
+        button.setBackground(Color.MAGENTA);
     }
 }
