@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -30,7 +30,7 @@ public class MyFrame extends JFrame implements ActionListener, MouseListener {
 
         // Button stuff
         button = new JButton();
-        button.setBounds(200, 100, 350, 200);
+        button.setBounds(300, 200, 350, 200);
         button.addActionListener(this);
         button.setText("Button");
         button.setFocusable(false);
@@ -43,9 +43,10 @@ public class MyFrame extends JFrame implements ActionListener, MouseListener {
 
         // Label stuff
         label = new JLabel("Hello world");
-        label.setSize(100, 50);
+        label.setSize(400, 200);
         label.setBackground(Color.BLACK);
         label.setLocation(100, 50);
+        label.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
@@ -66,6 +67,7 @@ public class MyFrame extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        button.setBackground(Color.RED);
     }
 
     @Override
