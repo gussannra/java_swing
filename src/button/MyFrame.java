@@ -61,7 +61,7 @@ public class MyFrame extends JFrame implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
-            System.out.println("\033[0;34mpoo");
+            System.out.println("\033[0;34mpoo\033[0m");
         }
     }
 
