@@ -11,19 +11,20 @@ public class Main {
         new MyFrame();
         long endTime = System.nanoTime();
         long elapsedTime = endTime - startTime;
-        float elapsedTimeMilliseconds = (float) (elapsedTime / 1_000_000.0);
+
+        double elapsedTimeMilliseconds = elapsedTime / 1_000_000.0;
         System.out.println(elapsedTimeMilliseconds);
 
         try {
-            copyStats(elapsedTime);
+            copyStats(elapsedTimeMilliseconds);
         } catch (IOException ex) {
             System.out.println("Something went wrong");
             ex.printStackTrace();
         }
     }
 
-    public static void copyStats(float elapsedTimeMilliseconds) throws IOException {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("elapsedTimeStats.csv", true))) {
+    public static void copyStats(double elapsedTimeMilliseconds) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("data/elapsedTimeStats.csv", true))) {
             bw.write(String.valueOf(elapsedTimeMilliseconds));
             bw.newLine();
         } catch (IOException ex) {
