@@ -4,8 +4,10 @@ javac  -cp ./src ./src/button/Main.java
 echo "Running Java.."
 java -cp ./src ./src/button/Main.java
 
+cd analysis
 echo "Running R script to generate plot..."
-Rscript ./analysis/analyze.r
+Rscript analyze.r
+cd ..
 
 echo "Opening PNG plot..."
 
